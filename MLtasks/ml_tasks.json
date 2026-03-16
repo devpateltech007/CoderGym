@@ -839,6 +839,63 @@
             "requirements": {
                 "validation": "AUC/AP reported with deterministic sampling."
             }
+        },
+        {
+            "series": "Deep Learning (New Tasks)",
+            "level": 1,
+            "id": "dl_lvl1_cifar10_cnn",
+            "algorithm": "CNN on CIFAR-10 (New Dataset)",
+            "description": "Train a small CNN on CIFAR-10 with train/val split; compute MSE (cross-entropy loss), accuracy, and R2-like metrics; assert quality thresholds; exit 0 on success.",
+            "interface_protocol": "pytorch_task_v1",
+            "requirements": {
+                "data": "Use torchvision CIFAR-10; 80% train / 20% validation split.",
+                "implementation": "Small CNN (e.g., 2-3 conv layers + FC); CrossEntropyLoss; Adam optimizer.",
+                "evaluation": "evaluate() returns loss, accuracy, per-class metrics on validation split.",
+                "main_block": "Train, evaluate on train and val, print metrics, assert val accuracy > 0.55, exit via sys.exit(exit_code)."
+            }
+        },
+        {
+            "series": "Deep Learning (New Tasks)",
+            "level": 2,
+            "id": "dl_lvl2_mlp_adamw_cosine",
+            "algorithm": "MLP with AdamW and Cosine Annealing (Different Optimization)",
+            "description": "MLP classifier on MNIST using AdamW optimizer and CosineAnnealingLR scheduler; compare to fixed LR baseline.",
+            "interface_protocol": "pytorch_task_v1",
+            "requirements": {
+                "data": "MNIST via torchvision; train/val split.",
+                "implementation": "nn.Module MLP; AdamW; torch.optim.lr_scheduler.CosineAnnealingLR.",
+                "evaluation": "Report train/val loss, accuracy, final learning rate.",
+                "main_block": "Assert val accuracy > 0.97; exit 0 on success."
+            }
+        },
+        {
+            "series": "Deep Learning (New Tasks)",
+            "level": 3,
+            "id": "dl_lvl3_training_features",
+            "algorithm": "Training with Gradient Clipping, Label Smoothing, Early Stopping",
+            "description": "Train a classifier (e.g., MLP on Fashion-MNIST) with gradient clipping, label smoothing loss, and early stopping on validation metric.",
+            "interface_protocol": "pytorch_task_v1",
+            "requirements": {
+                "data": "Fashion-MNIST; train/val split.",
+                "implementation": "Gradient clipping (torch.nn.utils.clip_grad_norm_); label smoothing in CrossEntropyLoss; early stopping when val loss does not improve for N epochs.",
+                "evaluation": "Report epochs trained, final train/val metrics.",
+                "main_block": "Assert val accuracy > 0.85; exit 0 on success."
+            }
+        },
+        {
+            "series": "Deep Learning (New Tasks)",
+            "level": 4,
+            "id": "dl_lvl4_fashion_mnist_augmented",
+            "algorithm": "Fashion-MNIST with Data Augmentation (New Dataset + Features)",
+            "description": "Train CNN or MLP on Fashion-MNIST with data augmentation (random crop, horizontal flip, normalization); save augmentation samples visualization.",
+            "interface_protocol": "pytorch_task_v1",
+            "requirements": {
+                "data": "Fashion-MNIST; train/val split; augmentation on train only.",
+                "implementation": "Transforms: RandomCrop, RandomHorizontalFlip, Normalize; no augmentation on val.",
+                "visualization": "Save grid of augmented sample images to artifact.",
+                "evaluation": "Report train/val accuracy and loss; assert val accuracy > 0.88.",
+                "main_block": "Exit 0 on success via sys.exit(exit_code)."
+            }
         }
     ]
 }
