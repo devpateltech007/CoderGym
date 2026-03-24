@@ -1,0 +1,83 @@
+{
+  "batch_size": 1024,
+  "warmup": 10,
+  "iters": 50,
+  "sizes": [
+    [
+      1024,
+      1024
+    ],
+    [
+      2048,
+      2048
+    ],
+    [
+      4096,
+      4096
+    ],
+    [
+      8192,
+      8192
+    ]
+  ],
+  "baseline_tf32_off": [
+    {
+      "in_features": 1024,
+      "out_features": 1024,
+      "batch_size": 1024,
+      "avg_ms": 0.2970732790231705,
+      "tflops": 7.22880110611532
+    },
+    {
+      "in_features": 2048,
+      "out_features": 2048,
+      "batch_size": 1024,
+      "avg_ms": 1.0306835246086121,
+      "tflops": 8.334211605120892
+    },
+    {
+      "in_features": 4096,
+      "out_features": 4096,
+      "batch_size": 1024,
+      "avg_ms": 3.8256486368179323,
+      "tflops": 8.98141508274515
+    },
+    {
+      "in_features": 8192,
+      "out_features": 8192,
+      "batch_size": 1024,
+      "avg_ms": 15.340085144042968,
+      "tflops": 8.959464838783624
+    }
+  ],
+  "tensorcore_tf32_on": [
+    {
+      "in_features": 1024,
+      "out_features": 1024,
+      "batch_size": 1024,
+      "avg_ms": 0.2074783995747566,
+      "tflops": 10.350396245592012
+    },
+    {
+      "in_features": 2048,
+      "out_features": 2048,
+      "batch_size": 1024,
+      "avg_ms": 0.7086720049381257,
+      "tflops": 12.121171052537893
+    },
+    {
+      "in_features": 4096,
+      "out_features": 4096,
+      "batch_size": 1024,
+      "avg_ms": 2.6157964706420898,
+      "tflops": 13.135478525806652
+    },
+    {
+      "in_features": 8192,
+      "out_features": 8192,
+      "batch_size": 1024,
+      "avg_ms": 9.474451217651367,
+      "tflops": 14.5062706340125
+    }
+  ]
+}

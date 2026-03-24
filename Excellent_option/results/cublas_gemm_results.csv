@@ -1,0 +1,9 @@
+framework,mode,batch_size,in_features,out_features,avg_ms,tflops,speedup_vs_sgemm
+cublas,sgemm,1024,1024,1024,0.273076,7.86404,1.0
+cublas,sgemm,1024,2048,2048,0.991273,8.66556,1.0
+cublas,sgemm,1024,4096,4096,3.85442,8.91438,1.0
+cublas,sgemm,1024,8192,8192,14.9474,9.19483,1.0
+cublas,tf32_tensor_op,1024,1024,1024,0.163034,13.172,1.67497
+cublas,tf32_tensor_op,1024,2048,2048,0.667034,12.8778,1.48609
+cublas,tf32_tensor_op,1024,4096,4096,2.40693,14.2753,1.60138
+cublas,tf32_tensor_op,1024,8192,8192,9.53328,14.4168,1.56792
